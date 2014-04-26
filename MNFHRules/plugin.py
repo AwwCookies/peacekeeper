@@ -77,6 +77,8 @@ class MNFHRules(callbacks.Plugin):
     murica = wrap(murica)
 
     def whatislove(self, irc, msg, args):
+        """ what is love?
+        """
         irc.reply('Baby don''t hurt me')
         irc.reply('Don''t hurt me')
         irc.reply('No more')
