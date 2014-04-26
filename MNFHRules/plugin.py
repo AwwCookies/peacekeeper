@@ -41,7 +41,10 @@ class MNFHRules(callbacks.Plugin):
     This should describe *how* to use this plugin."""
     pass
 
+    @internationalizeDocstring
     def isitfriday(self, irc, msg, args):
+        """Tells you if it's Friday or not.
+        """
         if datetime.datetime.now().weekday()==4:
             irc.reply("\x0313 YOU'RE DAMN RIGHT IT'S FRIDAY!!!")
         else:
@@ -52,13 +55,20 @@ class MNFHRules(callbacks.Plugin):
         irc.reply("Welcome to #mnfh {0}! We look forward to getting to know you! Please read more about the chat and rules here: http://goo.gl/dh08Gr".format(newusername))
     welcome = wrap(welcome, ['text'])
 
+    @internationalizeDocstring
     def dance(self, irc, msg, args):
+        """ Tells bot to dance!
+        """"
+
         irc.reply('\x03%s\\o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s/o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s\\o\\' % str(randint(0, 16)).zfill(1))
     dance = wrap(dance)
     
+    @internationalizeDocstring
     def murica(self, irc, msg, args):
+        """Murica!!!
+        """
         irc.reply('Fuck YEAH!')
     murica = wrap(murica)
 
@@ -68,11 +78,22 @@ class MNFHRules(callbacks.Plugin):
         irc.reply('No more')
     whatislove = wrap(whatislove)
 
-
+    @internationalizeDocstring
     def stab(self, irc, msg, args, usern):
+        """ Stab function to stab your enemies
+        """
+        #usern="brakos"
         irc.reply("o()xxxx[{::::::*%s*::::::>" % usern)
     stab = wrap(stab, ['text'])
 
+
+    @internationalizeDocstring
+    def kinematic1(self, irc, msg, args, usern):
+        """ impersonate kinematic1
+        """
+        irc.reply("hiyooooooooooooooo %s !" % usern)
+
+     kinematic1= wrap(kinematic1, ['text'])
 
 
 Class = MNFHRules
