@@ -89,7 +89,7 @@ class MNFHRules(callbacks.Plugin):
         """ Stab function to stab your enemies
         """
         #usern="brakos"
-        irc.reply("o()xxxx[{::::::*%s*::::::>" % usern)
+        irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
 
 
