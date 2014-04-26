@@ -91,6 +91,14 @@ class MNFHRules(callbacks.Plugin):
         #usern="brakos"
         irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
+    
+    @internationalizeDocstring
+    def eyeroll(self, irc, msg, args, usern):
+        """ eyeroll
+        """
+
+        irc.reply("◔̯◔ %s"% usern)
+    eyeroll = wrap(eyeroll, ['text'])
 
 
     @internationalizeDocstring
