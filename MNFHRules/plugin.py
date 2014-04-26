@@ -58,8 +58,7 @@ class MNFHRules(callbacks.Plugin):
     @internationalizeDocstring
     def dance(self, irc, msg, args):
         """ Tells bot to dance!
-        """
-        
+        """"
         irc.reply('\x03%s\\o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s/o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s\\o\\' % str(randint(0, 16)).zfill(1))
