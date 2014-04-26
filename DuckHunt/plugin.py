@@ -1051,7 +1051,7 @@ class DuckHunt(callbacks.Plugin):
 		    except:
 			recordmsg = ''
 
-		irc.reply("Best time: %s with %.2f seconds%s" % (key, value, recordmsg))
+		irc.reply("Best time: x%sx with %.2f seconds%s" % (key, value, recordmsg))
 
 	    # Getting channel worst time (to see if the worst time of this hunt is worst)
 	    channelworstnick = None
@@ -1075,7 +1075,7 @@ class DuckHunt(callbacks.Plugin):
 
 		# Only display worst time if something new
 		if (recordmsg != ''):
-		    irc.reply("Longest time: %s with %.2f seconds%s" % (key, value, recordmsg))
+		    irc.reply("Longest time: x%sx with %.2f seconds%s" % (key, value, recordmsg))
 
 	    # Showing average shooting time:
 	    #if (self.shoots[currentChannel] > 1):
@@ -1102,9 +1102,9 @@ class DuckHunt(callbacks.Plugin):
 		    winnernick, winnerscore = max(weekscores.iteritems(), key=lambda (k,v):(v,k))
 		    if (winnernick != self.leader[currentChannel]):
 			if self.leader[currentChannel] != None:
-			    irc.reply("%s took the lead for the week over %s with %i points." % (winnernick, self.leader[currentChannel], winnerscore)) 
+			    irc.reply("x%sx took the lead for the week over x%sx with %i points." % (winnernick, self.leader[currentChannel], winnerscore)) 
 			else:
-			    irc.reply("%s has the lead for the week with %i points." % (winnernick, winnerscore)) 
+			    irc.reply("x%sx has the lead for the week with %i points." % (winnernick, winnerscore)) 
 			self.leader[currentChannel] = winnernick
 
 
