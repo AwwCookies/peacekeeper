@@ -55,6 +55,8 @@ class MNFHRules(callbacks.Plugin):
 
     isitfriday = wrap(isitfriday)
     def welcome(self, irc, msg, args, newusername):
+        """Welcomes the user to the chan!!
+        """
         irc.reply("Welcome to #mnfh {0}! We look forward to getting to know you! Please read more about the chat and rules here: http://goo.gl/dh08Gr".format(newusername))
     welcome = wrap(welcome, ['text'])
 
