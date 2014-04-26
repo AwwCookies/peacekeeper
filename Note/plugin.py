@@ -163,7 +163,7 @@ class Note(callbacks.Plugin):
                        (unread, 'unread', 'note'), unnotified,
                        unreadIds, unread)
             # Later we'll have a user value for allowing this to be a NOTICE.
-            irc.reply(s, private=True)
+            irc.reply(s, private=False)
             for nid in unnotifiedIds:
                 id = int(nid[1:])
                 self.db.setNotified(id)
