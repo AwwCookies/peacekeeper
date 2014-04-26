@@ -1023,7 +1023,12 @@ class DuckHunt(callbacks.Plugin):
 		#irc.reply("Winner: %s with %i points" % (winnernick, winnerscore))
 		#irc.reply(self.scores.get(currentChannel))
 		#TODO: Better display
-		irc.reply(sorted(self.scores.get(currentChannel).iteritems(), key=lambda (k,v):(v,k), reverse=True))
+		recentscoreoutput = "";
+		recentscores = sorted(self.scores.get(currentChannel).iteritems(), key=lambda (k,v):(v,k), reverse=True)
+		for item in recentscores:
+	            recentscoreoutput+= "x" + item[0] + "x: "+ str(item[1]) + " | "
+			
+		irc.reply(recentscoreoutput)
 
 
 
