@@ -35,6 +35,9 @@ import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 import datetime
 from random import randint
+from supybot.i18n import PluginInternationalization, internationalizeDocstring
+
+_ = PluginInternationalization('MNFHRules')
 
 class MNFHRules(callbacks.Plugin):
     """Add the help for "@plugin help MNFHRules" here
