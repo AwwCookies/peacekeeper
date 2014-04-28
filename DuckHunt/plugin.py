@@ -416,7 +416,7 @@ class DuckHunt(callbacks.Plugin):
 	    else:
 		if (self.manualFriday.get(channel) == None or self.manualFriday[channel] == False):
 		    self.manualFriday[channel] = True
-		    irc.reply("Friday mode is now enabled! Shoot alllllllllllll the ducks!")
+		    irc.reply("Friday mode is now enabled!")
 		else:
 		    self.manualFriday[channel] = False
 		    irc.reply("Friday mode is now disabled.")
@@ -1023,12 +1023,7 @@ class DuckHunt(callbacks.Plugin):
 		#irc.reply("Winner: %s with %i points" % (winnernick, winnerscore))
 		#irc.reply(self.scores.get(currentChannel))
 		#TODO: Better display
-		recentscoreoutput = "";
-		recentscores = sorted(self.scores.get(currentChannel).iteritems(), key=lambda (k,v):(v,k), reverse=True)
-		for item in recentscores:
-	            recentscoreoutput+= "x" + item[0] + "x: "+ str(item[1]) + " | "
-			
-		irc.reply(recentscoreoutput)
+		irc.reply(sorted(self.scores.get(currentChannel).iteritems(), key=lambda (k,v):(v,k), reverse=True))
 
 
 
@@ -1144,9 +1139,12 @@ class DuckHunt(callbacks.Plugin):
 
 		    # Store the fact that there's a duck now
 		    self.duck[currentChannel] = True
+		    
+		    # Set duck replies
+		    quack = ['\_o< Quack!', '\_o< Kvaak', '\_o< Honk!', '\_o< Kvack!',]
 
 		    # Send message directly (instead of queuing it with irc.reply)
-		    irc.sendMsg(ircmsgs.privmsg(currentChannel, "\_o< quack!"))
+		    irc.sendMsg(ircmsgs.privmsg(currentChannel,(random.choice(quack))))
 
 		    # Define a new throttle[currentChannel] for the next launch
 		    self.throttle[currentChannel] = random.randint(self.minthrottle[currentChannel], self.maxthrottle[currentChannel])

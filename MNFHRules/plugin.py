@@ -52,8 +52,18 @@ class MNFHRules(callbacks.Plugin):
             irc.reply("\x0313 YOU'RE DAMN RIGHT IT'S FRIDAY!!!")
         else:
             irc.reply("It's not Friday, You can pretend it is, but it just won't be the same.") 
-
     isitfriday = wrap(isitfriday)
+    
+    @internationalizeDocstring
+    def isitmonday(self, irc, msg, args):
+        """Tells you if it's Monday or not.
+        """
+        if datetime.datetime.now().weekday()==0:
+            irc.reply("Please no, don't let it be so. Please.")
+        else:
+            irc.reply("*sigh of relief* it's not monday.") 
+    isitmonday = wrap(isitmonday)
+    
     def welcome(self, irc, msg, args, newusername):
         """Welcomes the user to the chan!!
         """
@@ -75,12 +85,19 @@ class MNFHRules(callbacks.Plugin):
         """
         irc.reply('Fuck YEAH!')
     murica = wrap(murica)
+    
+    @internationalizeDocstring
+    def britain(self, irc, msg, args):
+        """Britain!!!
+        """
+        irc.reply('Would you care for a spot of tea?')
+    britain = wrap(britain)
 
     def whatislove(self, irc, msg, args):
         """ what is love?
         """
-        irc.reply('Baby don''t hurt me')
-        irc.reply('Don''t hurt me')
+        irc.reply("Baby don't hurt me")
+        irc.reply("Don't hurt me")
         irc.reply('No more')
     whatislove = wrap(whatislove)
 
@@ -105,7 +122,7 @@ class MNFHRules(callbacks.Plugin):
     def kinematic1(self, irc, msg, args, usern):
         """ impersonate kinematic1
         """
-        irc.reply("hiyooooooooooooooo %s !" % usern)
+        irc.reply("hiyooooooooooooooo %s!" % usern)
 
     kinematic1= wrap(kinematic1, ['text'])
 
