@@ -28,6 +28,9 @@
 
 ###
 
+
+# -*- coding: utf-8 -*-
+
 import supybot.utils as utils
 from supybot.commands import *
 import supybot.plugins as plugins
