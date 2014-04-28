@@ -1139,9 +1139,12 @@ class DuckHunt(callbacks.Plugin):
 
 		    # Store the fact that there's a duck now
 		    self.duck[currentChannel] = True
+		    
+		    # Set duck replies
+		    quack = ['Quack!', 'Kvaak', 'Honk!']
 
 		    # Send message directly (instead of queuing it with irc.reply)
-		    irc.sendMsg(ircmsgs.privmsg(currentChannel, "\_o< quack!"))
+		    irc.sendMsg(ircmsgs.privmsg(currentChannel,(random.choice(quack))))
 
 		    # Define a new throttle[currentChannel] for the next launch
 		    self.throttle[currentChannel] = random.randint(self.minthrottle[currentChannel], self.maxthrottle[currentChannel])
