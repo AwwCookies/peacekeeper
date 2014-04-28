@@ -11,4 +11,4 @@ If you have any issues which you would like addressed I recommend you go [here](
 
 ##Donations
 
-- If you wish to put forward a donation for the **running costs** of Peacekeeper then please click [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=97GA6XRGJ2FEQ)
+If you wish to put forward a donation for the **running costs** of Peacekeeper then please click [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=97GA6XRGJ2FEQ)
