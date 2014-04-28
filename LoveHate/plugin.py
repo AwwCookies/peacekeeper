@@ -269,6 +269,8 @@ class LoveHate(callbacks.Plugin):
     random = wrap(random, ['channeldb',optional(("literal", ("love","hate")))])
     
     def get(self, irc, msg, args, channel, id):
+        """self
+        explanatory"""
         if id == None:
             records = self.db.select(channel, lambda r: True)
             responses = []
@@ -281,6 +283,8 @@ class LoveHate(callbacks.Plugin):
     get = wrap(get, [('checkCapability','admin'), 'channeldb', optional('id')])
     
     def remove(self, irc, msg, args, channel, id):
+        """self
+        explanatory"""
         if id == None:
             irc.reply('No id specified')
         try:
