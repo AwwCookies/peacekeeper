@@ -416,7 +416,7 @@ class DuckHunt(callbacks.Plugin):
 	    else:
 		if (self.manualFriday.get(channel) == None or self.manualFriday[channel] == False):
 		    self.manualFriday[channel] = True
-		    irc.reply("Friday mode is now enabled! Shoot alllllllllllll the ducks!")
+		    irc.reply("Friday mode is now enabled!")
 		else:
 		    self.manualFriday[channel] = False
 		    irc.reply("Friday mode is now disabled.")
@@ -1141,7 +1141,7 @@ class DuckHunt(callbacks.Plugin):
 		    self.duck[currentChannel] = True
 		    
 		    # Set duck replies
-		    quack = ['\_o< Quack!', '\_o< Kvaak', '\_o< Honk!']
+		    quack = ['\_o< Quack!', '\_o< Kvaak', '\_o< Honk!', '\_o< Kvack!',]
 
 		    # Send message directly (instead of queuing it with irc.reply)
 		    irc.sendMsg(ircmsgs.privmsg(currentChannel,(random.choice(quack))))
