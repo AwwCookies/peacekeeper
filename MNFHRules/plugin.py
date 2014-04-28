@@ -91,7 +91,7 @@ class MNFHRules(callbacks.Plugin):
         """Britain!!!
         """
         irc.reply('Would you care for a spot of tea?')
-    murica = wrap(britain)
+    britain = wrap(britain)
 
     def whatislove(self, irc, msg, args):
         """ what is love?
