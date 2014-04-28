@@ -111,12 +111,14 @@ class LoveHate(callbacks.Plugin):
       irc.reply(response)      
       
     def lovers(self, irc, msg, args, channel):
-        """Who loves <thing>"""
+        """<thing>
+        Who loves <thing>"""
       self._top(irc, msg, args, channel, 'love')
     lovers = wrap(lovers, ['channeldb'])
       
     def haters(self, irc, msg, args, channel):
-        """Who hates <thing>"""
+        """<thing>
+        Who hates <thing>"""
       self._top(irc, msg, args, channel, 'hate')
     haters = wrap(haters, ['channeldb'])
 
