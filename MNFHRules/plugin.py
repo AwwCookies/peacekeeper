@@ -51,7 +51,7 @@ class MNFHRules(callbacks.Plugin):
         if datetime.datetime.now().weekday()==4:
             irc.reply("\x0313 YOU'RE DAMN RIGHT IT'S FRIDAY!!!")
         else:
-            irc.reply("It''s not Friday, You can pretend it is, but it just won''t be the same.") 
+            irc.reply("It's not Friday, You can pretend it is, but it just won't be the same.") 
 
     isitfriday = wrap(isitfriday)
     def welcome(self, irc, msg, args, newusername):
@@ -79,8 +79,8 @@ class MNFHRules(callbacks.Plugin):
     def whatislove(self, irc, msg, args):
         """ what is love?
         """
-        irc.reply('Baby don''t hurt me')
-        irc.reply('Don''t hurt me')
+        irc.reply("Baby don't hurt me")
+        irc.reply("Don't hurt me")
         irc.reply('No more')
     whatislove = wrap(whatislove)
 
