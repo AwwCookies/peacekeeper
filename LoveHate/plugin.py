@@ -111,13 +111,11 @@ class LoveHate(callbacks.Plugin):
       irc.reply(response)      
       
     def lovers(self, irc, msg, args, channel):
-        """Who loves you"""
-        self._top(irc, msg, args, channel, 'love')
+      self._top(irc, msg, args, channel, 'love')
     lovers = wrap(lovers, ['channeldb'])
       
     def haters(self, irc, msg, args, channel):
-        """Who hates you"""
-        self._top(irc, msg, args, channel, 'hate')
+      self._top(irc, msg, args, channel, 'hate')
     haters = wrap(haters, ['channeldb'])
 
     def love(self, irc, msg, args, channel, thing):
@@ -144,8 +142,7 @@ class LoveHate(callbacks.Plugin):
         except StopIteration:
             irc.reply("I have no record of %s's loving or hating %s" % (msg.nick, thing))
     dontcare = wrap(dontcare, ['channeldb', 'text'])
-    meh = dontcare
-    
+
     def _find_stuff_out(self, channel, predicate, emotion, extractor = lambda r: r):
         predicates = [predicate]
         if emotion != None:
@@ -268,8 +265,6 @@ class LoveHate(callbacks.Plugin):
     random = wrap(random, ['channeldb',optional(("literal", ("love","hate")))])
     
     def get(self, irc, msg, args, channel, id):
-        """
-        get"""
         if id == None:
             records = self.db.select(channel, lambda r: True)
             responses = []
@@ -282,8 +277,6 @@ class LoveHate(callbacks.Plugin):
     get = wrap(get, [('checkCapability','admin'), 'channeldb', optional('id')])
     
     def remove(self, irc, msg, args, channel, id):
-        """
-        remove"""
         if id == None:
             irc.reply('No id specified')
         try:
@@ -294,8 +287,6 @@ class LoveHate(callbacks.Plugin):
     remove = wrap(remove, [('checkCapability','admin'), 'channeldb', 'id'])
         
     def listCommands(self, pluginCommands=[]):
-        """
-        list"""
         L = self.__parent.listCommands(pluginCommands)
         for cmd in PRIVATE_COMMANDS:
             L.remove(cmd)
