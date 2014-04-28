@@ -117,7 +117,7 @@ class MNFHRules(callbacks.Plugin):
         """ eyeroll
         """
 
-        irc.reply("◔̯◔ %s"% usern)
+        irc.reply("@_@ %s"% usern)
     eyeroll = wrap(eyeroll, ['text'])
 
 
