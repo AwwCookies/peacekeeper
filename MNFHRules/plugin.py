@@ -96,6 +96,7 @@ class MNFHRules(callbacks.Plugin):
         irc.reply('Would you care for a spot of tea?')
     britain = wrap(britain)
 
+    @internationalizeDocstring
     def whatislove(self, irc, msg, args):
         """ what is love?
         """
@@ -103,6 +104,14 @@ class MNFHRules(callbacks.Plugin):
         irc.reply("Don't hurt me")
         irc.reply('No more')
     whatislove = wrap(whatislove)
+
+    @internationalizeDocstring
+    def snuggle(self, irc, msg, args):
+        """ snuggle...
+        """
+        irc.reply("(\xe3\x81\xa3\xe2\x8c\x92\xe2\x80\xbf\xe2\x8c\x92)\xe3\x81\xa3 %s" % usern)
+
+    snuggle = wrap(snuggle, ['text'])
 
     @internationalizeDocstring
     def stab(self, irc, msg, args, usern):
