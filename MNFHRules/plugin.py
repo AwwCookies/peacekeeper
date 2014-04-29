@@ -37,6 +37,7 @@ import supybot.plugins as plugins
 import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 import datetime
+import random
 from random import randint
 from supybot.i18n import PluginInternationalization, internationalizeDocstring
 
@@ -117,8 +118,9 @@ class MNFHRules(callbacks.Plugin):
     def stab(self, irc, msg, args, usern):
         """ Stab function to stab your enemies
         """
-        if 'brakos' in msg.nick:
+        if 'brakos' in msg.nick or random.random()<0.15:
             usern=msg.nick
+            irc.reply("%s tries to stab, but slips and accidentally stabs his/herself instead!" % msg.nick)
         irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
     
