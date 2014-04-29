@@ -122,7 +122,7 @@ class MNFHRules(callbacks.Plugin):
 		irc.reply("%s tries to stab %s, but instead they slip and accidentally stab themself!" % (msg.nick, usern))
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
 	elif 'Peacekeeper' in usern:
-		irc.reply("%s tries to stab Peacekeeper, instead using telekinesis Peacekeepr turns the blade and stabs %s"% (msg.nick, msg.nick))
+		irc.reply("%s tries to stab Peacekeeper, instead using telekinesis Peacekeeper turns the blade and stabs %s"% (msg.nick, msg.nick))
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
 	else:
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
