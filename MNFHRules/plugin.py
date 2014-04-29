@@ -123,7 +123,7 @@ class MNFHRules(callbacks.Plugin):
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
 	elif 'Peacekeeper' in usern:
 		irc.reply("%s tries to stab Peacekeeper, instead Peacekeeper dodges the blow and draws his peacekeeper and fires."% (msg.nick, msg.nick))
-		irc.reply("\u000\u061\u949\u047\u821\u839\u831\u831\u047\u039\u831\u039\u831\u032\u831\u032    X_X %s" % msg.nick)
+		irc.reply(u'\u003d\u03b5\u002f\u0335\u0347\u033f\u033f\u002f\u0027\u033f\u0027\u033f\u033f','     X_X %s' % msg.nick)
 	else:
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
