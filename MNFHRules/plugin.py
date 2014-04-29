@@ -119,10 +119,10 @@ class MNFHRules(callbacks.Plugin):
         """ Stab function to stab your enemies
         """
         if 'brakos' in msg.nick or random.random()<0.15:
-		irc.reply("%s tries to stab %s, but instead they slip and accidentally stab themself!" % (usern, msg.nick))
+		irc.reply("%s tries to stab %s, but instead they slip and accidentally stab themself!" % (msg.nick, usern))
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
 	else:
-		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
+		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
     
     @internationalizeDocstring
