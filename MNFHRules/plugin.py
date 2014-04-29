@@ -106,7 +106,7 @@ class MNFHRules(callbacks.Plugin):
     whatislove = wrap(whatislove)
 
     @internationalizeDocstring
-    def snuggle(self, irc, msg, args):
+    def snuggle(self, irc, msg, args, usern):
         """ snuggle...
         """
         irc.reply("(\xe3\x81\xa3\xe2\x8c\x92\xe2\x80\xbf\xe2\x8c\x92)\xe3\x81\xa3 %s" % usern)
@@ -127,7 +127,7 @@ class MNFHRules(callbacks.Plugin):
         """ eyeroll
         """
 
-        irc.reply("\xe2\x97\x94\xcc\xaf\xe2\x97\x94"% usern)
+        irc.reply("\xe2\x97\x94\xcc\xaf\xe2\x97\x94 %s"% usern)
     eyeroll = wrap(eyeroll, ['text'])
 
 
