@@ -108,7 +108,8 @@ class MNFHRules(callbacks.Plugin):
     def stab(self, irc, msg, args, usern):
         """ Stab function to stab your enemies
         """
-        #usern="brakos"
+        if 'brakos' in msg.nick:
+            usern=msg.nick
         irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
     
@@ -117,7 +118,7 @@ class MNFHRules(callbacks.Plugin):
         """ eyeroll
         """
 
-        irc.reply("@_@ %s"% usern)
+        irc.reply("\xe2\x97\x94\xcc\xaf\xe2\x97\x94"% usern)
     eyeroll = wrap(eyeroll, ['text'])
 
 
