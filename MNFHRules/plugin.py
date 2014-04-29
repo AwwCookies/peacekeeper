@@ -120,7 +120,7 @@ class MNFHRules(callbacks.Plugin):
         """
         if 'brakos' in msg.nick or random.random()<0.15:
             usern=msg.nick
-            irc.reply("%s tries to stab ", % usern, "but slips and accidentally stabs themself instead!" % msg.nick)
+            irc.reply("%s tries to stab %usern, but slips and accidentally stabs themself instead!" % msg.nick)
         irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
     stab = wrap(stab, ['text'])
     
