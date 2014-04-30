@@ -86,7 +86,7 @@ class DuckHunt(callbacks.Plugin):
 
     # Other params
     perfectbonus = 5 # How many extra-points are given when someones does a perfect hunt?
-    toplist = 5      # How many high{scores|times} are displayed by default?
+    toplist = 10      # How many high{scores|times} are displayed by default?
     dow = int(time.strftime("%u")) # Day of week
     woy = int(time.strftime("%V")) # Week of year
     year = time.strftime("%Y") 
@@ -470,7 +470,7 @@ class DuckHunt(callbacks.Plugin):
 	    try:
 		irc.reply(self.channelscores[currentChannel][nick])
 	    except:
-		irc.reply("There is no score for %s on %s" % (nick, currentChannel))
+		irc.reply("There is no score for %s on %s" % (self._unpingatize(nick), currentChannel))
 	else:
 	    irc.error('You have to be on a channel')
 
@@ -870,7 +870,7 @@ class DuckHunt(callbacks.Plugin):
 
 		    # Is the player reloading?
 		    if (self.reloading[currentChannel].get(msg.nick) and time.time() - self.reloading[currentChannel][msg.nick] < self.reloadtime[currentChannel]):
-			irc.reply("%s, you are reloading... (Reloading takes %i seconds)" % (msg.nick, self.reloadtime[currentChannel]))
+			irc.reply("%s, you are reloading... (Reloading takes %i seconds)" % (self._unpingatize(msg.nick), self.reloadtime[currentChannel]))
 			return 0
 		    
 
@@ -882,7 +882,7 @@ class DuckHunt(callbacks.Plugin):
 
 			# Did the player missed it?
 			if (random.random() < self.missprobability[currentChannel]):
-			    irc.reply("%s, you missed the duck!" % (msg.nick))
+			    irc.reply("%s, you missed the duck!" % (self._unpingatize(msg.nick)))
 			else:
 
 			    # Adds one point for the nick that shot the duck
@@ -895,7 +895,7 @@ class DuckHunt(callbacks.Plugin):
 				    self.scores[currentChannel] = {} 
 				    self.scores[currentChannel][msg.nick] = 1
 
-			    irc.reply("\_x< %s: %i (%.2f seconds)" % (msg.nick,  self.scores[currentChannel][msg.nick], bangdelay))
+			    irc.reply("\_x< %s: %i (%.2f seconds)" % (self._unpingatize(msg.nick),  self.scores[currentChannel][msg.nick], bangdelay))
 
 			    self.averagetime[currentChannel] += bangdelay
 
@@ -965,7 +965,7 @@ class DuckHunt(callbacks.Plugin):
 			    message += ' You just shot yourself!'
 
 			# Adding nick and score
-			message += " %s: %i" % (msg.nick, self.scores[currentChannel][msg.nick])
+			message += " %s: %i" % (self._unpingatize(msg.nick), self.scores[currentChannel][msg.nick])
 
 			# If we were able to have a bangdelay (ie: a duck was launched before someone did bang)
 			if (bangdelay):
@@ -1020,7 +1020,7 @@ class DuckHunt(callbacks.Plugin):
 
 	    # Is there a perfect?
 	    if (winnerscore == maxShoots):
-		irc.reply("\o/ %s: %i ducks out of %i: perfect!!! +%i \o/" % (winnernick, winnerscore, maxShoots, self.perfectbonus))
+		irc.reply("\o/ %s: %i ducks out of %i: perfect!!! +%i \o/" % (self._unpingatize(winnernick), winnerscore, maxShoots, self.perfectbonus))
 		self.scores[currentChannel][winnernick] += self.perfectbonus
 	    else:
 		# Showing scores
@@ -1052,7 +1052,7 @@ class DuckHunt(callbacks.Plugin):
 	    if (self.toptimes.get(currentChannel)):
 		key,value = min(self.toptimes.get(currentChannel).iteritems(), key=lambda (k,v):(v,k))
 		if (channelbesttime and value < channelbesttime):
-		    recordmsg = '. This is the new record for this channel! (previous record was held by ' + channelbestnick + ' with ' + str(round(channelbesttime,2)) +  ' seconds)'
+		    recordmsg = '. This is the new record for this channel! (previous record was held by ' + self._unpingatize(channelbestnick) + ' with ' + str(round(channelbesttime,2)) +  ' seconds)'
 		else:
 		    try:
 			if(value < self.channeltimes[currentChannel][key]):
@@ -1074,7 +1074,7 @@ class DuckHunt(callbacks.Plugin):
 	    if (self.worsttimes.get(currentChannel)):
 		key,value = max(self.worsttimes.get(currentChannel).iteritems(), key=lambda (k,v):(v,k))
 		if (channelworsttime and value > channelworsttime):
-		    recordmsg = '. This is the new longest time for this channel! (previous longest time was held by ' + channelworstnick + ' with ' + str(round(channelworsttime,2)) +  ' seconds)'
+		    recordmsg = '. This is the new longest time for this channel! (previous longest time was held by ' + self._unpingatize(channelworstnick) + ' with ' + str(round(channelworsttime,2)) +  ' seconds)'
 		else:
 		    try:
 			if(value > self.channelworsttimes[currentChannel][key]):
