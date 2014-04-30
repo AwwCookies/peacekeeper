@@ -92,6 +92,10 @@ class DuckHunt(callbacks.Plugin):
     year = time.strftime("%Y") 
     dayname = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Caturday', 'Saturday', 'Sunday']
 
+    def _unpingatize(self, str1):
+    	if len(str1)>1:
+    		str1=str[0]+"\x03"+str[1:]
+    	return str1
 
     def _calc_scores(self, channel):
 	"""
@@ -621,7 +625,7 @@ class DuckHunt(callbacks.Plugin):
 			msgstring = ''
 			scores = sorted(self.channelweek[channel][week][day].iteritems(), key=lambda (k,v):(v,k), reverse=True)
 			for item in scores:
-			    msgstring += "x" + item[0] + "x: "+ str(item[1]) + " | "
+			    msgstring +=  self._unpingatize( item[0]) +  ": "+ str(item[1]) + " | "
 
 			if msgstring != "":
 			    irc.reply("Scores for today: " + msgstring)
@@ -664,7 +668,7 @@ class DuckHunt(callbacks.Plugin):
 			    if self.channelweek[channel][week].get(i):
 				# Getting winner of the day
 				winnernick, winnerscore = max(self.channelweek[channel][week][i].iteritems(), key=lambda (k,v):(v,k))
-				msgstring += self.dayname[i - 1] + ": x" + winnernick + "x ("+ str(winnerscore) + ") | "
+				msgstring += self.dayname[i - 1] + ": " + self._unpingatize(winnernick) + "x ("+ str(winnerscore) + ") | "
 
 				# Getting all scores, to get the winner of the week
 				for player in self.channelweek[channel][week][i].keys():
@@ -679,7 +683,7 @@ class DuckHunt(callbacks.Plugin):
 			    irc.reply("Scores for week " + str(week) + ": " + msgstring)
 			    # Who's the winner at this point?
 			    winnernick, winnerscore = max(weekscores.iteritems(), key=lambda (k,v):(v,k))
-			    irc.reply("Leader: x%sx with %i points." % (winnernick, winnerscore)) 
+			    irc.reply("Leader: %s with %i points." % (self._unpingatize(winnernick), winnerscore)) 
 
 			else:
 			    irc.reply("There aren't any week scores for this week yet.")
@@ -739,7 +743,7 @@ class DuckHunt(callbacks.Plugin):
 	    for item in scores:
 		# Why do we show the nicks as xnickx?
 		# Just to prevent everyone that has ever played a hunt in the channel to be pinged every time anyone asks for the score list
-		msgstring += "x" + item[0] + "x: "+ str(item[1]) + " | "
+		msgstring +=  self._unpingatize(item[0]) + ": "+ str(item[1]) + " | "
 	    if msgstring != "":
 		irc.reply("\_o< ~ DuckHunt top-" + str(listsize) + " scores for " + channel + " ~ >o_/")
 		irc.reply(msgstring)
@@ -1151,7 +1155,7 @@ class DuckHunt(callbacks.Plugin):
 		    self.duck[currentChannel] = True
 		    
 		    # Set duck replies
-		    quack = ['\_o< Quack!', '\_o< Kvaak', '\_o< Honk!', '\_o< Kvack!',]
+		    quack = ['\_o< quack!', '\_o< kvaak', '\_o< honk!', '\_o< kvack!',]
 
 		    # Send message directly (instead of queuing it with irc.reply)
 		    irc.sendMsg(ircmsgs.privmsg(currentChannel,(random.choice(quack))))
