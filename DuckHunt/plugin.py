@@ -808,7 +808,7 @@ class DuckHunt(callbacks.Plugin):
 	    msgstring = ""
 	    for item in times:
 		# Same as in listscores for the xnickx
-		msgstring += self.unpingatize( item[0]) + ": "+ str(round(item[1],2)) + " | "
+		msgstring += self._unpingatize( item[0]) + ": "+ str(round(item[1],2)) + " | "
 	    if msgstring != "":
 		irc.reply("\_o< ~ DuckHunt top-" + str(listsize) + " times for " + channel + " ~ >o_/")
 		irc.reply(msgstring)
