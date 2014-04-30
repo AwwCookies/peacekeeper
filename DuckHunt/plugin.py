@@ -808,7 +808,7 @@ class DuckHunt(callbacks.Plugin):
 	    msgstring = ""
 	    for item in times:
 		# Same as in listscores for the xnickx
-		msgstring += "x" + item[0] + "x: "+ str(round(item[1],2)) + " | "
+		msgstring += self.unpingatize( item[0]) + ": "+ str(round(item[1],2)) + " | "
 	    if msgstring != "":
 		irc.reply("\_o< ~ DuckHunt top-" + str(listsize) + " times for " + channel + " ~ >o_/")
 		irc.reply(msgstring)
@@ -825,7 +825,7 @@ class DuckHunt(callbacks.Plugin):
 		#msgstring += "x" + item[0] + "x: "+ time.strftime('%H:%M:%S', time.gmtime(item[1])) + ", "
 		roundseconds = round(item[1])
 		delta = datetime.timedelta(seconds=roundseconds)
-		msgstring += "x" + item[0] + "x: " + str(delta) + " | "
+		msgstring += self._unpingatize( item[0]) + ": " + str(delta) + " | "
 	    if msgstring != "":
 		irc.reply("\_o< ~ DuckHunt top-" + str(listsize) + " longest times for " + channel + " ~ >o_/")
 		irc.reply(msgstring)
@@ -1034,7 +1034,7 @@ class DuckHunt(callbacks.Plugin):
 
 		for item in recentscores:
 
-	            recentscoreoutput+= "x" + item[0] + "x: "+ str(item[1]) + " | "
+	            recentscoreoutput+= self._unpingatize( item[0]) + ": "+ str(item[1]) + " | "
 
 			
 
