@@ -121,7 +121,7 @@ class MNFHRules(callbacks.Plugin):
         if 'brakos' in msg.nick or random.random()<0.15:
 		irc.reply("%s tries to stab %s, but instead they slip and accidentally stab themself!" % (msg.nick, usern))
 		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
-	elif 'peacekeeper' in usern:
+	elif 'peacekeeper' in usern.lower():
 		irc.reply("%s tries to stab Peacekeeper, instead Peacekeeper dodges the attack and draws his weapon and fires."% msg.nick)
 		irc.reply(u'\u003d\u03b5\u002f\u0335\u0347\u033f\u033f\u002f\u0027\u033f\u0027\u033f\u033f  BANG!            X_X < {0}.' .format(msg.nick))
 	else:
