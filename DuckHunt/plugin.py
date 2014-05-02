@@ -94,7 +94,7 @@ class DuckHunt(callbacks.Plugin):
 
     def _unpingatize(self, str1):
     	if len(str1)>1:
-    		str1="\x03"+str1[0]+"\x03"+str1[1:]
+    		str1="xx\x03"+str1[0]+"\x03"+str1[1:]+"xx"
     	return str1
 
     def _calc_scores(self, channel):
