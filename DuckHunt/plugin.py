@@ -86,7 +86,7 @@ class DuckHunt(callbacks.Plugin):
 
     # Other params
     perfectbonus = 5 # How many extra-points are given when someones does a perfect hunt?
-    toplist = 10      # How many high{scores|times} are displayed by default?
+    toplist = 5      # How many high{scores|times} are displayed by default?
     dow = int(time.strftime("%u")) # Day of week
     woy = int(time.strftime("%V")) # Week of year
     year = time.strftime("%Y") 
