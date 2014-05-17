@@ -31,17 +31,17 @@
 
 # -*- coding: utf-8 -*-
 
-import supybot.utils as utils
-from supybot.commands import *
-import supybot.plugins as plugins
-import supybot.ircutils as ircutils
-import supybot.callbacks as callbacks
 import datetime
 import random
 from random import randint
+
+from supybot.commands import *
+import supybot.callbacks as callbacks
 from supybot.i18n import PluginInternationalization, internationalizeDocstring
 
+
 _ = PluginInternationalization('MNFHRules')
+
 
 class MNFHRules(callbacks.Plugin):
     """Add the help for "@plugin help MNFHRules" here
@@ -52,26 +52,31 @@ class MNFHRules(callbacks.Plugin):
     def isitfriday(self, irc, msg, args):
         """Tells you if it's Friday or not.
         """
-        if datetime.datetime.now().weekday()==4:
+        if datetime.datetime.now().weekday() == 4:
             irc.reply("\x0313 YOU'RE DAMN RIGHT IT'S FRIDAY!!!")
         else:
-            irc.reply("It's not Friday, You can pretend it is, but it just won't be the same.") 
+            irc.reply("It's not Friday, You can pretend it is, but it just won't be the same.")
+
     isitfriday = wrap(isitfriday)
-    
+
     @internationalizeDocstring
     def isitmonday(self, irc, msg, args):
         """Tells you if it's Monday or not.
         """
-        if datetime.datetime.now().weekday()==0:
+        if datetime.datetime.now().weekday() == 0:
             irc.reply("Please no, don't let it be so. Please.")
         else:
-            irc.reply("*sigh of relief* it's not monday.") 
+            irc.reply("*sigh of relief* it's not monday.")
+
     isitmonday = wrap(isitmonday)
-    
+
     def welcome(self, irc, msg, args, newusername):
         """Welcomes the user to the chan!!
         """
-        irc.reply("Welcome to #mnfh {0}! We look forward to getting to know you! Please read more about the chat and rules here: http://goo.gl/dh08Gr".format(newusername))
+        irc.reply(
+            "Welcome to #mnfh {0}! We look forward to getting to know you! Please read more about the chat and rules here: http://goo.gl/dh08Gr".format(
+                newusername))
+
     welcome = wrap(welcome, ['text'])
 
     @internationalizeDocstring
@@ -81,20 +86,23 @@ class MNFHRules(callbacks.Plugin):
         irc.reply('\x03%s\\o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s/o/' % str(randint(0, 16)).zfill(1))
         irc.reply('\x03%s\\o\\' % str(randint(0, 16)).zfill(1))
+
     dance = wrap(dance)
-    
+
     @internationalizeDocstring
     def murica(self, irc, msg, args):
         """Murica!!!
         """
         irc.reply('Fuck YEAH!')
+
     murica = wrap(murica)
-    
+
     @internationalizeDocstring
     def britain(self, irc, msg, args):
         """Britain!!!
         """
         irc.reply('Would you care for a spot of tea?')
+
     britain = wrap(britain)
 
     @internationalizeDocstring
@@ -104,46 +112,53 @@ class MNFHRules(callbacks.Plugin):
         irc.reply("Baby don't hurt me")
         irc.reply("Don't hurt me")
         irc.reply('No more')
+
     whatislove = wrap(whatislove)
 
     @internationalizeDocstring
-    def snuggle(self, irc, msg, args, usern):
+    def snuggle(self, irc, msg, args, user_name):
         """ snuggle...
         """
-        irc.reply("(\xe3\x81\xa3\xe2\x8c\x92\xe2\x80\xbf\xe2\x8c\x92)\xe3\x81\xa3 %s" % usern)
+        irc.reply("(\xe3\x81\xa3\xe2\x8c\x92\xe2\x80\xbf\xe2\x8c\x92)\xe3\x81\xa3 %s" % user_name)
 
     snuggle = wrap(snuggle, ['text'])
 
     @internationalizeDocstring
-    def stab(self, irc, msg, args, usern):
+    def stab(self, irc, msg, args, user_name):
         """ Stab function to stab your enemies
         """
-        if 'brakos' in msg.nick or random.random()<0.15:
-		irc.reply("%s tries to stab %s, but instead they slip and accidentally stab themself!" % (msg.nick, usern))
-		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% msg.nick)
-	elif 'peacekeeper' in usern.lower():
-		irc.reply("%s tries to stab Peacekeeper, instead Peacekeeper dodges the attack and draws his weapon and fires."% msg.nick)
-		irc.reply(u'\u003d\u03b5\u002f\u0335\u0347\u033f\u033f\u002f\u0027\u033f\u0027\u033f\u033f  BANG!            X_X < {0}.' .format(msg.nick))
-	else:
-		irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>"% usern)
-    stab = wrap(stab, ['text'])
-    
+        if 'brakos' in msg.nick or random.random() < 0.15:
+            irc.reply(
+                "%s tries to stab %s, but instead they slip and accidentally stab themself!" % (msg.nick, user_name))
+            irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>" % msg.nick)
+        elif 'peacekeeper' in usern.lower():
+            irc.reply(
+                u"{0:s} tries to stab Peacekeeper, instead Peacekeeper dodges the attack and draws his weapon and fires.".format(
+                    msg.nick))
+            irc.reply(
+                u'\u003d\u03b5\u002f\u0335\u0347\u033f\u033f\u002f\u0027\u033f\u0027\u033f\u033f  BANG!            X_X < {0}.'.format(
+                    msg.nick))
+        else:
+            irc.reply("\x0308o()\x0304xxxx\x0308[{\x0315::::::*\x0300%s*\x0315::::::>" % user_name)
+        stab = wrap(stab, ['text'])
+
+        @internationalizeDocstring
+        def eyeroll(self, irc, msg, args, user_name):
+            """ eyeroll
+            """
+
+            irc.reply("\xe2\x97\x94\xcc\xaf\xe2\x97\x94 %s" % user_name)
+
+        eyeroll = wrap(eyeroll, ['text'])
+
+
     @internationalizeDocstring
-    def eyeroll(self, irc, msg, args, usern):
-        """ eyeroll
-        """
-
-        irc.reply("\xe2\x97\x94\xcc\xaf\xe2\x97\x94 %s"% usern)
-    eyeroll = wrap(eyeroll, ['text'])
-
-
-    @internationalizeDocstring
-    def kinematic1(self, irc, msg, args, usern):
+    def kinematic1(self, irc, msg, args, user_name):
         """ impersonate kinematic1
         """
-        irc.reply("hiyooooooooooooooo %s!" % usern)
+        irc.reply(u"hiyooooooooooooooo {0:s}!".format(user_name))
 
-    kinematic1= wrap(kinematic1, ['text'])
+    kinematic1 = wrap(kinematic1, ['text'])
 
 
 Class = MNFHRules
