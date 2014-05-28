@@ -1155,7 +1155,7 @@ class DuckHunt(callbacks.Plugin):
 		    self.duck[currentChannel] = True
 		    
 		    # Set duck replies
-		    quack = ['\_o< quack!', '\_o< kvaak', '\_o< honk!', '\_o< kvack!',]
+		    quack = ['\_o< quack!', '\_o< kvaak', '\_o< honk!', '\_o< kvack!','\_o< Couac!',]
 
 		    # Send message directly (instead of queuing it with irc.reply)
 		    irc.sendMsg(ircmsgs.privmsg(currentChannel,(random.choice(quack))))
