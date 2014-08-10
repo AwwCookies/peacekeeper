@@ -104,7 +104,7 @@ class Timebomb(callbacks.Plugin):
             else:
                 if self.goodWire.lower() == self.cutWire.lower():
                     self.irc.queueMsg(ircmsgs.privmsg(self.channel, '%s has cut the %s wire!  This has defused the bomb!' % (self.victim, self.cutWire)))
-                    self.irc.queueMsg(ircmsgs.privmsg(self.channel, 'He then quickly rearms the bomb and throws it back at %s with just seconds on the clock!' % self.sender))
+                    self.irc.queueMsg(ircmsgs.privmsg(self.channel, 'They then quickly rearms the bomb and throws it back at %s with just seconds on the clock!' % self.sender))
                     self.victim = self.sender
                     self.thrown = True
                     schedule.rescheduleEvent('%s_bomb' % self.channel, time.time() + 5)
